@@ -170,8 +170,12 @@ Here is the list of tasks prebuild with django-jenkins
 Changelog
 ---------
 
+0.15.1 2016-03-22
+~~~~~~~~~~~~~~~~~
+* Backported fix for Unicode issues from django-jenkins 0.16.4
+
 0.15.0 2013-02-15
-~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 * Speed up and reduced memory usage for junit reports generation
 * django_tests and dir_tests test discovery tasks are replaced by directory discover test runner build-in in django 1.6
 * Removed unmaintained lettuce tests support
