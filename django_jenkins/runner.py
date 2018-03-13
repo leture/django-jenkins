@@ -33,7 +33,7 @@ from django_jenkins import signals
 
 class EXMLTestResult(TextTestResult):
     def __init__(self, *args, **kwargs):
-        self.case_start_time = None
+        self.case_start_time = time.time()
         self.run_start_time = None
         self.tree = None
         super(EXMLTestResult, self).__init__(*args, **kwargs)
@@ -111,7 +111,7 @@ class EXMLTestResult(TextTestResult):
         testcase = ET.SubElement(self.tree, 'testcase')
         testcase.set('time', "%.6f" % time_taken)
         testcase.set('classname', '.'.join(classname))
-        testcase.set('name', test._testMethodName)
+        testcase.set('name', getattr(test, '_testMethodName', getattr(test, 'description', 'UNKNOWN')))
         return testcase
 
     def _add_tb_to_test(self, test, test_result, err):
